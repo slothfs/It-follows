@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dlt3vpvj1thbb"]
+
+[ext_resource type="Texture2D" uid="uid://bg85et77vxls" path="res://assets/plaayer/player.png" id="1_0rvn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqplm"]
+size = Vector2(32, 32)
+
+[node name="shadow" type="CharacterBody2D" unique_id=1683641687]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1459863443]
+modulate = Color(0, 0, 0, 0.92156863)
+texture = ExtResource("1_0rvn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693657593]
+shape = SubResource("RectangleShape2D_jqplm")
