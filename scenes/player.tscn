@@ -6,8 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(32, 32)
 
-[node name="player" type="CharacterBody2D" unique_id=1192232938]
-collision_mask = 3
+[node name="Player" type="CharacterBody2D" unique_id=1192232938]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394958811]

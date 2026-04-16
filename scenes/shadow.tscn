@@ -5,8 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqplm"]
 size = Vector2(32, 32)
 
-[node name="shadow" type="CharacterBody2D" unique_id=1683641687]
-collision_layer = 2
+[node name="Shadow" type="CharacterBody2D" unique_id=1683641687]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1459863443]
 modulate = Color(0, 0, 0, 0.92156863)

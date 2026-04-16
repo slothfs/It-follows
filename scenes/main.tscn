@@ -4,9 +4,13 @@
 [ext_resource type="Script" uid="uid://cnrr6d0exo6va" path="res://script/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dlt3vpvj1thbb" path="res://scenes/shadow.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://kc2j24tg4he4" path="res://assets/plaayer/block.png" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://bg85et77vxls" path="res://assets/plaayer/player.png" id="4_tbgi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqplm"]
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
-size = Vector2(1158, 180)
+size = Vector2(1146, 186)
 
 [node name="main" type="Node2D" unique_id=716298080]
 script = ExtResource("1_jyhfs")
@@ -17,25 +21,55 @@ offset_bottom = 645.0
 
 [node name="ColorRect" type="ColorRect" parent="Panel" unique_id=2118123267]
 layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 646.0
+offset_right = 1157.0
+offset_bottom = 666.0
 color = Color(0.8237593, 0.82507503, 1, 1)
 
-[node name="player" parent="." unique_id=1192232938 instance=ExtResource("1_0wfyh")]
+[node name="Player" parent="." unique_id=1192232938 instance=ExtResource("1_0wfyh")]
 position = Vector2(125, 448)
 scale = Vector2(2, 2)
 
-[node name="shadow" parent="." unique_id=1683641687 instance=ExtResource("2_sugp2")]
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=1713015527]
+limit_left = 0
+limit_top = 0
+limit_right = 1700
+limit_bottom = 650
+
+[node name="Shadow" parent="." unique_id=1683641687 instance=ExtResource("2_sugp2")]
 position = Vector2(39, 443)
 scale = Vector2(2, 2)
+
+[node name="ShadowLeft" type="CharacterBody2D" parent="." unique_id=21485560]
+position = Vector2(39, 443)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShadowLeft" unique_id=1459863443]
+modulate = Color(0, 0, 0, 0.92156863)
+texture = ExtResource("4_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowLeft" unique_id=693657593]
+shape = SubResource("RectangleShape2D_jqplm")
+disabled = true
+
+[node name="ShadowRight" type="CharacterBody2D" parent="." unique_id=2022524490]
+position = Vector2(39, 443)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShadowRight" unique_id=334279528]
+modulate = Color(0, 0, 0, 0.92156863)
+texture = ExtResource("4_tbgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowRight" unique_id=864241109]
+shape = SubResource("RectangleShape2D_jqplm")
+disabled = true
 
 [node name="ground" type="StaticBody2D" parent="." unique_id=865860428]
 
 [node name="Sprite2D" type="Sprite2D" parent="ground" unique_id=1919823449]
-position = Vector2(577, 556.25)
-scale = Vector2(36.000004, 5.4218745)
+position = Vector2(577, 564.25)
+scale = Vector2(36, 5.921875)
 texture = ExtResource("3_sugp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1336982701]
-position = Vector2(578, 556)
+position = Vector2(572, 559)
 shape = SubResource("RectangleShape2D_jyhfs")
