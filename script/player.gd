@@ -13,12 +13,15 @@ func _physics_process(delta):
 		if velocity.y > 0:
 			velocity.y = 0
 
-	# Left / Right
+	# l / r
 	var direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity.x = direction * speed
 
-	# Jump (only when on floor)
+	# Jump 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_force  # negative = up
 
 	move_and_slide()
+
+func die():
+	get_tree().reload_current_scene()
