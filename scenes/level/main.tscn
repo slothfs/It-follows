@@ -3,7 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://ty8sb6qp3s88" path="res://scenes/player.tscn" id="1_64aob"]
 [ext_resource type="Script" uid="uid://c6ocypk3lucdh" path="res://script/main.gd" id="1_gjage"]
 [ext_resource type="PackedScene" uid="uid://dlt3vpvj1thbb" path="res://scenes/shadow.tscn" id="2_gjage"]
+[ext_resource type="Shader" uid="uid://bjo4a3i2xdo53" path="res://scenes/lvl.gdshader" id="2_x0mk0"]
 [ext_resource type="Texture2D" uid="uid://by3107hl35mwv" path="res://assets/plaayer/shadow.png" id="3_x0mk0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hqms"]
+shader = ExtResource("2_x0mk0")
+shader_parameter/base_color = Color(0.92, 0.92, 0.92, 1)
+shader_parameter/wave_color = Color(0.82, 0.82, 0.82, 1)
+shader_parameter/speed = 0.03
+shader_parameter/strength = 0.03
+shader_parameter/scale = 2.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64aob"]
 texture = ExtResource("3_x0mk0")
@@ -21,17 +30,12 @@ radius = 173.40416
 [node name="main" type="Node2D" unique_id=716298080]
 script = ExtResource("1_gjage")
 
-[node name="Panel" type="Panel" parent="." unique_id=1165044420]
-offset_top = -12.0
-offset_right = 1305.0
-offset_bottom = 730.0
-
-[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=2118123267]
-layout_mode = 0
+[node name="CloudBG" type="ColorRect" parent="." unique_id=2118123267]
+material = SubResource("ShaderMaterial_2hqms")
 offset_left = -18.0
-offset_top = -42.0
+offset_top = -54.0
 offset_right = 1304.0
-offset_bottom = 720.0
+offset_bottom = 708.0
 
 [node name="Player" parent="." unique_id=1192232938 instance=ExtResource("1_64aob")]
 position = Vector2(55, 586)
@@ -55,5 +59,21 @@ position = Vector2(647, 315)
 [node name="lvl1" type="CollisionShape2D" parent="lvl1" unique_id=542364191]
 position = Vector2(1420, 493)
 shape = SubResource("CircleShape2D_1bkat")
+
+[node name="Label" type="Label" parent="." unique_id=1447058927]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 554.0
+offset_top = 165.0
+offset_right = 769.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "level 1"
 
 [connection signal="body_entered" from="lvl1" to="." method="_on_lvl_1_body_entered"]

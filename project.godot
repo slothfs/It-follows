@@ -24,6 +24,10 @@ window/size/viewport_height=720
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://dwvm4bild0hwp"
+
 [input]
 
 jump={
