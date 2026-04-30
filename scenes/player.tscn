@@ -1,16 +1,28 @@
 [gd_scene format=3 uid="uid://ty8sb6qp3s88"]
 
 [ext_resource type="Script" uid="uid://bct178qvob012" path="res://script/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://djha76ucs6wrs" path="res://assets/plaayer/player1.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://byj26qt8o8jpv" path="res://assets/plaayer/damn.png" id="2_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(32, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=1192232938]
 script = ExtResource("1_g2els")
+speed = 700.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394958811]
+texture_filter = 1
 texture = ExtResource("2_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471095607]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038453522]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="detection_area" type="Area2D" parent="." unique_id=830102039]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=471095607]
 shape = SubResource("RectangleShape2D_g2els")
+debug_color = Color(0.91764706, 0.07058824, 1, 0.41960785)

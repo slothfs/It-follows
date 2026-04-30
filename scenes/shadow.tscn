@@ -1,15 +1,39 @@
 [gd_scene format=3 uid="uid://dlt3vpvj1thbb"]
 
-[ext_resource type="Texture2D" uid="uid://bg85et77vxls" path="res://assets/plaayer/player.png" id="1_0rvn4"]
+[ext_resource type="Texture2D" uid="uid://byj26qt8o8jpv" path="res://assets/plaayer/damn.png" id="1_0rvn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rvn4"]
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqplm"]
 size = Vector2(32, 32)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0rvn4"]
+particle_flag_disable_z = true
+orbit_velocity_min = -0.99999994
+orbit_velocity_max = 2.0000002
+gravity = Vector3(0, 500, 0)
+scale_min = 5.0
+scale_max = 5.0
+color = Color(0.011702106, 0.011702109, 0.011702107, 1)
+
 [node name="Shadow" type="CharacterBody2D" unique_id=1683641687]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1459863443]
-modulate = Color(0, 0, 0, 0.92156863)
+modulate = Color(0.7079665, 0.7079665, 0.7079664, 1)
+texture_filter = 1
 texture = ExtResource("1_0rvn4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693657593]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=658413746]
+shape = SubResource("RectangleShape2D_0rvn4")
+debug_color = Color(0.91764706, 0.07058824, 1, 0.41960785)
+
+[node name="hurt" type="Area2D" parent="." unique_id=457625028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt" unique_id=693657593]
 shape = SubResource("RectangleShape2D_jqplm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1172197175]
+amount = 19
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_0rvn4")
