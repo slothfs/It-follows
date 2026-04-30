@@ -39,7 +39,7 @@ position = Vector2(55, 586)
 [node name="Shadow" parent="." unique_id=1683641687 instance=ExtResource("2_gjage")]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(39, 6)
-speed = 300.0
+speed = 200.0
 player_path = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=267993557]

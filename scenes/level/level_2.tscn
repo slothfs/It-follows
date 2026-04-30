@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d03tpr4udl1jd"]
 
 [ext_resource type="Texture2D" uid="uid://by3107hl35mwv" path="res://assets/plaayer/shadow.png" id="1_ao1bm"]
+[ext_resource type="Script" uid="uid://b0cqgovpo08ae" path="res://script/level_2.gd" id="1_c0fdf"]
 [ext_resource type="PackedScene" uid="uid://ty8sb6qp3s88" path="res://scenes/player.tscn" id="2_2g46k"]
 [ext_resource type="PackedScene" uid="uid://dlt3vpvj1thbb" path="res://scenes/shadow.tscn" id="3_c0fdf"]
 
@@ -14,7 +15,11 @@ texture_region_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_u7l0e")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tguex"]
+radius = 212.0
+
 [node name="level2" type="Node2D" unique_id=1208838679]
+script = ExtResource("1_c0fdf")
 
 [node name="Panel" type="Panel" parent="." unique_id=100993396]
 offset_right = 1282.0
@@ -37,3 +42,16 @@ position = Vector2(89, 601)
 
 [node name="Shadow" parent="." unique_id=1683641687 instance=ExtResource("3_c0fdf")]
 position = Vector2(92, 190)
+speed = 300.0
+player_path = NodePath("../Player")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1072095825]
+position = Vector2(648, 308)
+
+[node name="lvl2" type="Area2D" parent="." unique_id=569152655]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lvl2" unique_id=1714115616]
+position = Vector2(1472, 500)
+shape = SubResource("CircleShape2D_tguex")
+
+[connection signal="body_entered" from="lvl2" to="." method="_on_lvl_2_body_entered"]
