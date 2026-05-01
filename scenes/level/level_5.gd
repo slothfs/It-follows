@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $Player
 @onready var teleport: Area2D = $teleport
+@onready var fade: CanvasLayer = $Fade
+
 
 
 
