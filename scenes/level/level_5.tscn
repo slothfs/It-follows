@@ -48,6 +48,8 @@ position = Vector2(78, 453)
 
 [node name="Shadow" parent="." unique_id=1683641687 instance=ExtResource("5_l3gn7")]
 position = Vector2(511, 65)
+speed = 400.0
+player_path = NodePath("../Player")
 
 [node name="teleport" type="Area2D" parent="." unique_id=519968511]
 
