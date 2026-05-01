@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cppyjewo7pav8"]
+
+[ext_resource type="Shader" uid="uid://bjo4a3i2xdo53" path="res://scenes/lvl.gdshader" id="1_3cckn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1btj"]
+shader = ExtResource("1_3cckn")
+shader_parameter/base_color = Color(0.92, 0.92, 0.92, 1)
+shader_parameter/wave_color = Color(0.82, 0.82, 0.82, 1)
+shader_parameter/speed = 1.0
+shader_parameter/strength = 0.03
+shader_parameter/scale = 6.0
+
+[node name="level6" type="Node2D" unique_id=2045242448]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1983306223]
+material = SubResource("ShaderMaterial_u1btj")
+offset_right = 1275.0
+offset_bottom = 709.0

@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var speed: float = 200.0
@@ -23,5 +24,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func die():
-	get_tree().reload_current_scene()
+func die() -> void:
+	get_tree().paused = true
+	var death_screen: CanvasLayer = get_tree().current_scene.get_node("DeathScreen") as CanvasLayer
+	death_screen.show()

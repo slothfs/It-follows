@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://b3y0bmpmyvu0a"]
+
+[ext_resource type="Shader" uid="uid://cxskjmb232tlu" path="res://scenes/level/pause_menu.gdshader" id="1_7rqh4"]
+[ext_resource type="Script" uid="uid://bdylhn6uu7qj7" path="res://scenes/level/death_screen.gd" id="1_l5e0p"]
+[ext_resource type="Shader" uid="uid://bjo4a3i2xdo53" path="res://scenes/lvl.gdshader" id="2_8ieh3"]
+[ext_resource type="Texture2D" uid="uid://chuccej0shulm" path="res://assets/game_o.png" id="3_72moe"]
+[ext_resource type="Texture2D" uid="uid://d2s8mavr6oh50" path="res://assets/pp.png" id="4_l5e0p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72moe"]
+shader = ExtResource("1_7rqh4")
+shader_parameter/blur_strength = 5.0
+shader_parameter/alpha = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5e0p"]
+shader = ExtResource("2_8ieh3")
+shader_parameter/base_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+shader_parameter/wave_color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+shader_parameter/speed = 1.0
+shader_parameter/strength = 0.004
+shader_parameter/scale = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8mu7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8mu7"]
+atlas = ExtResource("3_72moe")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfc6d"]
+atlas = ExtResource("3_72moe")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsnti"]
+atlas = ExtResource("3_72moe")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfal2"]
+atlas = ExtResource("3_72moe")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlx64"]
+atlas = ExtResource("4_l5e0p")
+region = Rect2(0, 0, 92, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5d5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8mu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfc6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsnti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfal2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlx64")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=2018636282]
+visible = false
+script = ExtResource("1_l5e0p")
+
+[node name="BG" type="ColorRect" parent="." unique_id=635626969]
+material = SubResource("ShaderMaterial_72moe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2080375477]
+material = SubResource("ShaderMaterial_l5e0p")
+offset_left = 434.0
+offset_top = 112.0
+offset_right = 851.0
+offset_bottom = 597.0
+size_flags_vertical = 4
+color = Color(0.37716255, 0.37716258, 0.37716255, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1962137427]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 41.0
+offset_right = 335.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "Dead!"
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=1321193894]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 319.0
+offset_right = 311.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_q8mu7")
+text = "playagain:("
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=203690814]
+position = Vector2(630, 355)
+scale = Vector2(0.6393507, 0.7367416)
+sprite_frames = SubResource("SpriteFrames_y5d5p")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

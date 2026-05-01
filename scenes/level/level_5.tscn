@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlt3vpvj1thbb" path="res://scenes/shadow.tscn" id="5_l3gn7"]
 [ext_resource type="PackedScene" uid="uid://bnlmd3mbmpi0s" path="res://scenes/level/fade.tscn" id="6_b71tw"]
 [ext_resource type="PackedScene" uid="uid://dvw184qab7hx2" path="res://scenes/level/pause_menu.tscn" id="7_4kvp3"]
+[ext_resource type="PackedScene" uid="uid://b3y0bmpmyvu0a" path="res://scenes/level/death_screen.tscn" id="8_l3gn7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sij8g"]
 shader = ExtResource("1_yuhs0")
@@ -85,8 +86,12 @@ theme_override_font_sizes/font_size = 100
 text = "level 5"
 
 [node name="Fade" parent="." unique_id=575649592 instance=ExtResource("6_b71tw")]
+visible = false
 
 [node name="PauseMenu" parent="." unique_id=1883003045 instance=ExtResource("7_4kvp3")]
+visible = false
+
+[node name="DeathScreen" parent="." unique_id=2018636282 instance=ExtResource("8_l3gn7")]
 
 [connection signal="body_entered" from="teleport" to="." method="_on_teleport_body_entered"]
 [connection signal="body_entered" from="lvl" to="." method="_on_lvl_body_entered"]
