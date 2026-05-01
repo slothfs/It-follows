@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="it-follows"
-run/main_scene="uid://cxrcroo8xs55k"
+run/main_scene="uid://kmxmagktkl8u"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

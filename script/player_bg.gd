@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var jump_force := -450.0
 @export var gravity := 900.0
 
+@export var shadow: Node2D
+@export var danger_distance := 25.0
+
 var time_passed := 0.0
 var direction := 1
 var jump_timer := 0.0
@@ -14,21 +17,25 @@ func _physics_process(delta):
 	jump_timer += delta
 	switch_timer += delta
 
-
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	
 	if switch_timer > 2.5:
 		direction *= -1
 		switch_timer = 0.0
 
 	velocity.x = direction * move_speed
-
-
 	velocity.x += sin(time_passed * 3.0) * 80
 
+	# 
+	if shadow:
+		var dist = global_position.distance_to(shadow.global_position)
 
+		if dist < danger_distance and is_on_floor():
+			velocity.y = jump_force * 1.3
+			jump_timer = 0.0
+
+	# normal jump 
 	if jump_timer > 1.8 and is_on_floor():
 		velocity.y = jump_force
 		jump_timer = 0.0
