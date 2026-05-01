@@ -1,3 +1,131 @@
 [gd_scene format=3 uid="uid://dvw184qab7hx2"]
 
+[ext_resource type="Script" uid="uid://m0tptc4gjnia" path="res://script/pause_menu.gd" id="1_a0tao"]
+[ext_resource type="Shader" uid="uid://cxskjmb232tlu" path="res://scenes/level/pause_menu.gdshader" id="1_wqvan"]
+[ext_resource type="Shader" uid="uid://bjo4a3i2xdo53" path="res://scenes/lvl.gdshader" id="2_iwte4"]
+[ext_resource type="Texture2D" uid="uid://bbkkcbibdluh" path="res://assets/right icon.png" id="3_78e0o"]
+[ext_resource type="Texture2D" uid="uid://cvci31lokdsqe" path="res://assets/exit.png" id="4_mv0n4"]
+[ext_resource type="Texture2D" uid="uid://kcjtuotsu8lh" path="res://assets/reset.png" id="5_lbis3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwte4"]
+shader = ExtResource("1_wqvan")
+shader_parameter/blur_strength = 5.0
+shader_parameter/alpha = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78e0o"]
+shader = ExtResource("2_iwte4")
+shader_parameter/base_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+shader_parameter/wave_color = Color(0.30980393, 0.30980393, 0.30980393, 1)
+shader_parameter/speed = 1.0
+shader_parameter/strength = 0.004
+shader_parameter/scale = 5.0
+
 [node name="PauseMenu" type="CanvasLayer" unique_id=1883003045]
+process_mode = 3
+script = ExtResource("1_a0tao")
+
+[node name="BG" type="ColorRect" parent="." unique_id=166904687]
+material = SubResource("ShaderMaterial_iwte4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=282967547]
+material = SubResource("ShaderMaterial_78e0o")
+offset_left = 434.0
+offset_top = 112.0
+offset_right = 851.0
+offset_bottom = 597.0
+size_flags_vertical = 4
+color = Color(0.37716255, 0.37716258, 0.37716255, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=898746954]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 18.0
+offset_right = 333.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+
+[node name="resume" type="Label" parent="ColorRect" unique_id=1522495284]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 171.0
+offset_right = 211.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "resume :"
+
+[node name="resume" type="TextureButton" parent="ColorRect/resume" unique_id=1918422523]
+texture_filter = 1
+layout_mode = 0
+offset_left = 157.0
+offset_top = 10.0
+offset_right = 207.0
+offset_bottom = 60.0
+texture_normal = ExtResource("3_78e0o")
+
+[node name="quit" type="Label" parent="ColorRect" unique_id=1539356747]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 272.0
+offset_right = 147.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "quit :"
+
+[node name="quit" type="TextureButton" parent="ColorRect/quit" unique_id=1163049723]
+texture_filter = 1
+layout_mode = 0
+offset_left = 101.0
+offset_top = 12.0
+offset_right = 151.0
+offset_bottom = 62.0
+texture_normal = ExtResource("4_mv0n4")
+
+[node name="skip" type="Label" parent="ColorRect" unique_id=1825193907]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 404.0
+offset_right = 341.0
+offset_bottom = 535.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "skip :
+"
+
+[node name="skip" type="TextureButton" parent="ColorRect/skip" unique_id=1922923223]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 8.0
+offset_right = 145.0
+offset_bottom = 58.0
+texture_normal = ExtResource("3_78e0o")
+
+[node name="skip2" type="TextureButton" parent="ColorRect/skip" unique_id=61085827]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 8.0
+offset_right = 138.0
+offset_bottom = 58.0
+texture_normal = ExtResource("3_78e0o")
+
+[node name="restart" type="TextureButton" parent="." unique_id=586476930]
+offset_left = 446.0
+offset_top = 534.0
+offset_right = 958.0
+offset_bottom = 1046.0
+scale = Vector2(0.09484332, 0.09291658)
+texture_normal = ExtResource("5_lbis3")
+
+[connection signal="pressed" from="ColorRect/resume/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/quit/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ColorRect/skip/skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="ColorRect/skip/skip2" to="." method="_on_skip_2_pressed"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]

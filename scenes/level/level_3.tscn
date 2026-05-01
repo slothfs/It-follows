@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ty8sb6qp3s88" path="res://scenes/player.tscn" id="2_lt2g7"]
 [ext_resource type="PackedScene" uid="uid://dlt3vpvj1thbb" path="res://scenes/shadow.tscn" id="3_ss58e"]
 [ext_resource type="PackedScene" uid="uid://bnlmd3mbmpi0s" path="res://scenes/level/fade.tscn" id="6_y16bo"]
+[ext_resource type="PackedScene" uid="uid://dvw184qab7hx2" path="res://scenes/level/pause_menu.tscn" id="7_2o5k4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b88og"]
 shader = ExtResource("1_ss58e")
@@ -78,6 +79,7 @@ theme_override_font_sizes/font_size = 100
 text = "level 3"
 
 [node name="Fade" parent="." unique_id=575649592 instance=ExtResource("6_y16bo")]
-visible = false
+
+[node name="PauseMenu" parent="." unique_id=1883003045 instance=ExtResource("7_2o5k4")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
